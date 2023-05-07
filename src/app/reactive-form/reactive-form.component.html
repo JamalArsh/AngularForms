@@ -1,0 +1,189 @@
+<div class="container">
+  <h1>Reactive Form</h1>
+  <form action="" [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+    <label for="">Name</label>
+    <input type="text" formControlName="name" />
+    <span
+      *ngIf="
+        !reactiveForm.get('name')?.valid &&
+        reactiveForm.get('name')?.touched &&
+        !reactiveForm.valid
+      "
+      class="warning-msg"
+      >Name can not be empty</span
+    >
+
+    <label for="">Email</label>
+    <input type="email" formControlName="email" />
+    <span
+      *ngIf="
+        !reactiveForm.get('email')?.valid && reactiveForm.get('email')?.touched
+      "
+      class="warning-msg"
+      >Email can not be empty</span
+    >
+    <span
+      *ngIf="
+        !reactiveForm.get('email')?.valid && reactiveForm.get('email')?.touched
+      "
+      class="warning-msg"
+      >Invalid email format
+    </span>
+
+    <label for="">Password</label>
+    <input type="password" formControlName="password" />
+    <span
+      *ngIf="
+        !reactiveForm.get('password')?.valid &&
+        reactiveForm.get('password')?.touched
+      "
+      class="warning-msg"
+      >Password can not be empty</span
+    >
+    <span
+      *ngIf="
+        !reactiveForm.get('password')?.valid &&
+        reactiveForm.get('password')?.touched
+      "
+      class="warning-msg"
+      >Minimum 6 characters needed
+    </span>
+
+    <label for="">Age</label>
+    <input type="number" formControlName="age" />
+    <span
+      *ngIf="
+        !reactiveForm.get('age')?.valid && reactiveForm.get('age')?.touched
+      "
+      class="warning-msg"
+      >Age can not be empty</span
+    >
+    <span
+      *ngIf="
+        !reactiveForm.get('age')?.valid && reactiveForm.get('age')?.touched
+      "
+      class="warning-msg"
+      >Age shoulde be within 16 to 55
+    </span>
+
+    <label for="">Experience</label><span>{{ expValue }}</span>
+    <input
+      type="range"
+      min="0"
+      max="10"
+      [(ngModel)]="expValue"
+      formControlName="experience"
+    />
+    <span
+      *ngIf="
+        !reactiveForm.get('experience')?.valid &&
+        reactiveForm.get('experience')?.touched
+      "
+      class="warning-msg"
+      >Choose valid years of experience
+    </span>
+
+    <label>Gender</label>
+    <div class="gender-box">
+      <input
+        type="radio"
+        name="gender"
+        id="male"
+        value="male"
+        formControlName="gender"
+      />
+      <label for="male">Male</label>
+    </div>
+    <div class="gender-box">
+      <input
+        type="radio"
+        name="gender"
+        id="female"
+        value="female"
+        formControlName="gender"
+      />
+      <label for="female">female</label>
+    </div>
+
+    <label for="job">Job role</label>
+    <select formControlName="job" id="job">
+      <option value="" disabled selected>Select a role...</option>
+      <option value="front-end">Front-End developer</option>
+      <option value="back-end">Back-End developer</option>
+      <option value="full-stack">Full-stack developer</option>
+      <option value="ui-ux">UI/UX designer</option>
+      <option value="qa">Quality assurance engineer</option>
+    </select>
+
+    <fieldset class="languages">
+      <legend>Languages</legend>
+      <div class="check-box-group">
+        <input
+          type="checkbox"
+          id="sinhala"
+          formControlName="lang"
+          value="sinhala"
+        />
+        <label for="sinhala">Sinhala</label>
+      </div>
+      <div class="check-box-group">
+        <input
+          type="checkbox"
+          id="tamil"
+          formControlName="lang"
+          value="tamil"
+        />
+        <label for="tamil">Tamil</label>
+      </div>
+      <div class="check-box-group">
+        <input
+          type="checkbox"
+          id="english"
+          formControlName="lang"
+          value="english"
+        />
+        <label for="english">English</label>
+      </div>
+    </fieldset>
+
+    <label for="cv">CV</label>
+    <input
+      formControlName="cv"
+      type="file"
+      accept=".pdf, .docx, .jpeg, .jpg, .png"
+    />
+
+    <!-- <div formArrayName="experienceDetails">
+      <ng-container
+        *ngFor="
+          let detail of reactiveForm.get('experienceDetails')['controls'];
+          index as i
+        "
+      >
+        <label>Experience {{ i }}</label>
+        <input type="text" placeholder="Company name..." />
+        <input type="number" placeholder="months of experience..." />
+      </ng-container>
+    </div> -->
+
+    <!-- <div formArrayName="experienceDetails">
+      <ng-container
+        *ngFor="
+          let details of reactiveForm.get('experienceDetails').controls;
+          index as i
+        "
+      >
+        <input type="text" placeholder="Company name" [formControlName]="i" />
+      </ng-container>
+    </div> -->
+
+    <button type="button" (click)="addExperienceDetails()">
+      + Add experience details
+    </button>
+
+    <fieldset>
+      <button type="submit" [disabled]="!reactiveForm.valid">Submit</button>
+      <button type="reset">Reset</button>
+    </fieldset>
+  </form>
+</div>

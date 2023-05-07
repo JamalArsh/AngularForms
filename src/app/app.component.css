@@ -1,0 +1,27 @@
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100px;
+  background-color: #aec2b6;
+  width: 100%;
+}
+
+a {
+  color: #00235b;
+  text-decoration: none;
+  font-size: larger;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+a:hover {
+  background-color: #146c94;
+  color: white;
+}
+
+.active {
+  border: 1px solid #77037b;
+}

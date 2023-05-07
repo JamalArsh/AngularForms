@@ -1,1 +1,144 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  font-family: "Poppins";
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  background-color: #aa77ff;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+form {
+  min-width: 400px;
+  background-color: #57c5b6;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+}
+input {
+  font-size: medium;
+  display: block;
+  width: 100%;
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  transition: all 0.3s;
+}
+
+input:focus {
+  border: 1px solid blue;
+  box-shadow: 0 0 0 5px #537fe7;
+}
+
+fieldset {
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem;
+  border: none;
+}
+
+button {
+  padding: 0.5rem;
+  color: white;
+  background-color: #060047;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.gender-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+input[type="radio"] {
+  display: inline;
+  width: auto;
+}
+
+input[type="radio"]:focus {
+  border: none;
+  box-shadow: none;
+}
+
+input[type="range"]:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.languages {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.check-box-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  display: inline;
+}
+
+input[type="range"] {
+  padding: 0;
+}
+
+input[type="checkbox"]:focus {
+  border: none;
+  box-shadow: none;
+}
+
+select {
+  font-size: medium;
+  display: block;
+  width: 100%;
+  outline: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  /* color: gray; */
+}
+
+/* option {
+  color: black;
+} */
+
+select:focus {
+  border: 1px solid blue;
+}
+
+.warning-msg {
+  color: crimson;
+  font-size: smaller;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
