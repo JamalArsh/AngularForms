@@ -1,45 +1,91 @@
 <div class="container">
   <h1>Template Driven Form</h1>
-  <form action="">
-    <label for="">Name</label>
-    <input type="text" required />
-    <span class="warning-msg">Name can not be empty*</span>
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+    <label for="name">Name</label>
+    <input type="text" name="name" required ngModel #name="ngModel" />
+    <span class="warning-msg" *ngIf="name.invalid && name.touched"
+      >Name can not be empty*</span
+    >
 
-    <label for="">Email</label>
-    <input type="email" />
-    <span class="warning-msg">Email can not be empty*</span>
-    <span class="warning-msg">Invalid email format* </span>
+    <label for="email">Email</label>
+    <input type="email" name="email" required email ngModel #email="ngModel" />
+    <span class="warning-msg" *ngIf="email.invalid && email.touched"
+      >Email can not be empty*</span
+    >
+    <span class="warning-msg" *ngIf="email.invalid && email.touched"
+      >Invalid email format*
+    </span>
 
-    <label for="">Password</label>
-    <input type="password" />
-    <span class="warning-msg">Password can not be empty*</span>
-    <span class="warning-msg">Invalid password format* </span>
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      required
+      ngModel
+      #password="ngModel"
+    />
+    <span class="warning-msg" *ngIf="password.invalid && password.touched"
+      >Password can not be empty*</span
+    >
+    <span class="warning-msg" *ngIf="password.invalid && password.touched"
+      >Invalid password format*
+    </span>
 
-    <label for="">Age</label>
-    <input type="number" min="1" max="100" name="age" />
+    <label for="age">Age</label>
+    <input
+      type="number"
+      min="16"
+      max="55"
+      name="age"
+      required
+      ngModel
+      #age="ngModel"
+    />
+    <span class="warning-msg" *ngIf="age.invalid && age.touched"
+      >Age can not be empty</span
+    >
+    <span class="warning-msg" *ngIf="age.invalid && age.touched"
+      >Age shoulde be within 16 to 55
+    </span>
 
-    <label for="">Experiance</label><span>{{ expValue }}</span>
+    <label for="experience">Experience</label><span>{{ expValue }}</span>
     <input
       type="range"
       min="0"
       max="10"
       value="5"
       [(ngModel)]="expValue"
-      name="exp"
+      name="experience"
+      required
+      ngModel
     />
 
     <label>Gender</label>
     <div class="gender-box">
-      <input type="radio" name="gender" id="male" value="male" />
+      <input
+        type="radio"
+        name="gender"
+        id="male"
+        value="male"
+        required
+        [ngModel]="defaultGender"
+      />
       <label for="male">Male</label>
     </div>
     <div class="gender-box">
-      <input type="radio" name="gender" id="female" value="female" />
+      <input
+        type="radio"
+        name="gender"
+        id="female"
+        value="female"
+        ngModel
+        [ngModel]="defaultGender"
+      />
       <label for="female">female</label>
     </div>
 
-    <label for="lang">Job role</label>
-    <select name="lang" id="lang">
+    <label for="job">Job role</label>
+    <select name="job" id="job" required ngModel>
       <option value="" disabled selected>Select a role...</option>
       <option value="front-end">Front-End developer</option>
       <option value="back-end">Back-End developer</option>
@@ -51,24 +97,41 @@
     <fieldset class="languages">
       <legend>Languages</legend>
       <div class="check-box-group">
-        <input type="checkbox" id="sinhala" name="lang" value="sinhala" />
+        <input
+          type="checkbox"
+          id="sinhala"
+          name="lang"
+          value="sinhala"
+          ngModel
+        />
         <label for="sinhala">Sinhala</label>
       </div>
       <div class="check-box-group">
-        <input type="checkbox" id="tamil" name="lang" value="tamil" />
+        <input type="checkbox" id="tamil" name="lang" value="tamil" ngModel />
         <label for="tamil">Tamil</label>
       </div>
       <div class="check-box-group">
-        <input type="checkbox" id="english" name="lang" value="english" />
+        <input
+          type="checkbox"
+          id="english"
+          name="lang"
+          value="english"
+          ngModel
+        />
         <label for="english">English</label>
       </div>
     </fieldset>
 
     <label for="cv">CV</label>
-    <input type="file" accept=".pdf, .docx, .jpeg, .jpg, .png" />
+    <input
+      type="file"
+      accept=".pdf, .docx, .jpeg, .jpg, .png"
+      name="cv"
+      ngModel
+    />
 
     <fieldset>
-      <button type="submit">Submit</button>
+      <button type="submit" [disabled]="!myForm.valid">Submit</button>
       <button type="reset">Reset</button>
     </fieldset>
   </form>

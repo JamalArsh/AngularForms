@@ -7,7 +7,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./reactive-form.component.css'],
 })
 export class ReactiveFormComponent implements OnInit {
-  expValue!: number;
+  expValue: number = 5;
   reactiveForm!: FormGroup;
 
   ngOnInit(): void {
